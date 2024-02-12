@@ -5,18 +5,22 @@ INFILES  := $(wildcard $(INPUT)*)
 OUTFILES := $(INFILES:$(INPUT)%=$(OUTPUT)%)
 
 
-default: clobber $(OUTFILES) filesums
+default: init $(OUTFILES)
 
 $(OUTPUT)%: $(INPUT)%
 	tr -d '\r' < $< > $@
 
-init:
+init: clobber
 	mkdir -p $(INPUT) $(OUTPUT)
 
-filesums:
-	cksum Makefile $(INFILES) $(OUTFILES) > cksums.txt
+rev:
+	for i in $$(ls -1 $(OUTPUT)); do unix2dos $(OUTPUT)$${i}; done
+
+sum:
+	cksum $(INFILES) $(OUTFILES) > cksum.txt
 
 clobber:
 	rm -rf $(OUTPUT)* ./*.txt
-clean:
+
+clean: clobber
 	rm -rf $(INPUT) $(OUTPUT) ./*.txt

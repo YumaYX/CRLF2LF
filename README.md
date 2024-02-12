@@ -1,17 +1,12 @@
 # CRLF2LF
 
-ファイルの改行コードをCRLFからLFに変換する。
+This repository provides a simple makefile to convert CRLF (Windows-style line endings) to LF (Unix-style line endings) in text files.
 
-## Prepare
+## Prerequisites
 
-```sh
-make prep
-```
+Make sure you have the `make` utility installed on your system.
 
-改行コードCRLFのファイルを、ディレクトリinputに格納する。
+## Directory Structure
 
-## CRLF -> LF
-
-```sh
-make
-```
+- input/: Directory for input text files.
+- output/: Directory for converted output text files.

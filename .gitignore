@@ -1,4 +1,4 @@
-input/
-output/
-*put/
-*.txt
+*
+!.gitignore
+!Makefile
+!README.md
